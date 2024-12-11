@@ -39,7 +39,7 @@ This fixer is a modified version of `OrderedImportsGroupFixer` for PHP CS Fixer.
 
 2. run, with dev-master (WIP)
 ```shell
-   composer require kep/cs-fixer --dev
+   composer require --dev kep/cs-fixer
 ```
 
 
