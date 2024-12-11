@@ -28,9 +28,16 @@ This fixer is a modified version of `OrderedImportsGroupFixer` for PHP CS Fixer.
 
 1. Add the modified `OrderedImportsGroupFixer` class to your project (e.g., in the `CustomFixer` directory):
 
-   ```bash
+```shell
    mkdir -p src/CustomFixer
-   ```
+```
+
+##### OR
+
+2. run, with dev-master (WIP)
+```shell
+   composer require kep/cs-fixer
+```
 
 **copy OrderedImportsGroupFixer.php to src/CustomFixer/ (or another dir)**
 (do not forget to configure yor composer autoload if you need it)
