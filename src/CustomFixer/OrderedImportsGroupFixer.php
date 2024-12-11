@@ -25,6 +25,8 @@ final class OrderedImportsGroupFixer extends AbstractFixer implements Configurab
 {
     use ConfigurableFixerTrait;
 
+    private const int MAXED_PRIORITY = -PHP_INT_MAX;
+
     public const string IMPORT_TYPE_CLASS = 'class';
 
     public const string IMPORT_TYPE_CONST = 'const';
@@ -230,6 +232,10 @@ use Bar;
                 ->setAllowedTypes(['array', 'null'])
                 ->setDefault(null)
                 ->getOption(),
+            (new FixerOptionBuilder('no_namespace_priority', 'Config priority mapping for sorting imports without full namespace.'))
+                ->setAllowedTypes(['int', 'null'])
+                ->setDefault(null)
+                ->getOption(),
         ]);
     }
 
@@ -288,6 +294,11 @@ use Bar;
     {
         $matchedPriority = 0;
         $matchedLength = 0;
+
+
+        if (!str_contains($namespace, '\\')) {
+            return $this->configuration['no_namespace_priority'] ?: self::MAXED_PRIORITY;
+        }
 
         foreach ($priorityMap as $prefix => $priority) {
             if (strpos($namespace, $prefix) === 0) {

@@ -27,6 +27,7 @@ return (new Config())
                 'App\\' => 1,
                 'DI\\' => -1
             ],
+            //'no_namespace_priority' => 12,
         ],
     ])
     ->setFinder($finder);
