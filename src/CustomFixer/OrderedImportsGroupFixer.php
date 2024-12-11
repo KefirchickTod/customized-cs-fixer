@@ -571,7 +571,12 @@ use Bar;
             $namespace = trim(preg_replace('/^(const|function)\s+/i', '', $namespace));
 
             $parts = explode('\\', ltrim($namespace, '\\'));
-            $groupName = $parts[0] ?? '';
+
+            if (!str_contains($namespace, '\\')) {
+                $groupName = 'php_module';
+            } else {
+                $groupName = $parts[0] ?? '';
+            }
 
             $importsData[] = [
                 'index' => $i,
