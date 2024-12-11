@@ -36,6 +36,7 @@
         }
     },
     "scripts": {
-        "kep-php-cs-fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "kep-php-cs-fixer": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "test": "vendor/bin/phpunit --colors=always --verbose"
     }
 }
