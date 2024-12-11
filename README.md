@@ -45,7 +45,7 @@ This fixer is a modified version of `OrderedImportsGroupFixer` for PHP CS Fixer.
 
 ## Examples
 
-**Config files**
+**Config file**
 ```php
 <?php
 
