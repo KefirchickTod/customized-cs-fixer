@@ -1,11 +1,10 @@
 <?php
 
-namespace src\CustomFixer;
+namespace KepCustomFixer\CustomFixer;
 
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\ConfigurableFixerTrait;
-use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
 use PhpCsFixer\FixerConfiguration\FixerConfigurationResolver;
 use PhpCsFixer\FixerConfiguration\FixerConfigurationResolverInterface;
@@ -19,6 +18,7 @@ use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\Tokenizer\TokensAnalyzer;
 use PhpCsFixer\Utils;
+
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 final class OrderedImportsGroupFixer extends AbstractFixer implements ConfigurableFixerInterface, WhitespacesAwareFixerInterface
@@ -408,7 +408,11 @@ use Bar;
                         if ($sortedParts === $parts) {
                             $namespace = Tokens::fromArray($namespaceTokens)->generateCode();
                         } else {
-                            $namespace .= $firstIndent . implode($separator, $parts) . ($hasGroupTrailingComma ? ',' : '') . $lastIndent . '}';
+                            $namespace .= $firstIndent .
+                                implode($separator, $parts) .
+                                ($hasGroupTrailingComma ? ',' : '') .
+                                $lastIndent . '}'
+                            ;
                         }
                     } else {
                         $namespace = Tokens::fromArray($namespaceTokens)->generateCode();
@@ -568,7 +572,7 @@ use Bar;
         $previousGroup = null;
         $insertPositions = [];
 
-        foreach ($importsData as $k => $data) {
+        foreach ($importsData as $data) {
             if (null !== $previousGroup && $previousGroup !== $data['group']) {
                 $insertPositions[] = $data['index'];
             }

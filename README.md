@@ -22,7 +22,7 @@ This fixer is a modified version of `OrderedImportsGroupFixer` for PHP CS Fixer.
 ## Requirements
 
 - PHP CS Fixer
-- PHP 8.0 or higher
+- PHP 8.3 or higher
 
 ## Installation
 
